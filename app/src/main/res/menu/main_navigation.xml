@@ -31,6 +31,10 @@
             android:icon="@drawable/ic_update"
             android:title="@string/main_navigation_menu_update"/>
         <item
+            android:id="@+id/main_navigation_settings"
+            android:icon="@drawable/ic_build"
+            android:title="@string/main_navigation_menu_settings"/>
+        <item
             android:id="@+id/main_navigation_about"
             android:icon="@drawable/ic_help"
             android:title="@string/main_navigation_menu_about"/>

@@ -12,7 +12,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:text="@string/main_navigation_login"
         android:textSize="18sp"
-        android:paddingBottom="3dp"/>
+        android:paddingBottom="3dp"
+        style="@style/Base.DialogWindowTitle.AppCompat"
+        />
 
 </RelativeLayout>
