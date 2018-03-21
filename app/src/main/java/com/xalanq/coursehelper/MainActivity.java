@@ -2,6 +2,7 @@ package com.xalanq.coursehelper;
 
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -36,6 +37,7 @@ public class MainActivity extends BasicActivity
     private String TAG = "MainActivity";
     private FragmentAllocator fragmentAllocator;
     private BasicFragment currentFragment;
+    private boolean doubleClickToExitPressOnce = false;
 
 
     @Override
@@ -98,7 +100,18 @@ public class MainActivity extends BasicActivity
             drawerLayout.closeDrawer(GravityCompat.START);
         }
         else {
-            super.onBackPressed();
+            if (doubleClickToExitPressOnce) {
+                super.onBackPressed();
+                return;
+            }
+            doubleClickToExitPressOnce = true;
+            Toast.makeText(this, R.string.main_double_click, Toast.LENGTH_SHORT).show();
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    MainActivity.this.doubleClickToExitPressOnce = false;
+                }
+            }, 2000);
         }
     }
 

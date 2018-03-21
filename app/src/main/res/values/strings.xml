@@ -19,4 +19,6 @@
     <string name="main_navigation_login">登录</string>
     <string name="main_navigation_logout">注销</string>
 
+    <string name="main_double_click">再按一次退出</string>
+
 </resources>
