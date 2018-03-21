@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Course Helper</string>
+    <string name="app_name">清华选课</string>
     <string name="app_author">xalanq</string>
     <string name="app_email">xalanq@gmail.com</string>
     <string name="app_github">github.com/xalanq/CourseHelper</string>
