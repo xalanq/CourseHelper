@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Course Helper</string>
+    <string name="app_author">xalanq</string>
+    <string name="app_email">xalanq@gmail.com</string>
+    <string name="app_github">github.com/xalanq/CourseHelper</string>
+    <string name="app_blog">blog.xalanq.com</string>
+    <string name="app_version">v1.0</string>
+
+    <string name="main_navigation_drawer_open">Open navigation drawer</string>
+    <string name="main_navigation_drawer_close">Close navigation drawer</string>
+    <string name="main_navigation_menu_kebiao">课表</string>
+    <string name="main_navigation_menu_guanzhu">关注</string>
+    <string name="main_navigation_menu_yiji">一级选课</string>
+    <string name="main_navigation_menu_erji">二级选课</string>
+    <string name="main_navigation_menu_tuike">退课</string>
+    <string name="main_navigation_menu_pf">选择P/F</string>
+    <string name="main_navigation_menu_update">更新数据库</string>
+    <string name="main_navigation_menu_about">关于</string>
+    <string name="main_navigation_login">登录</string>
+    <string name="main_navigation_logout">注销</string>
+
+</resources>

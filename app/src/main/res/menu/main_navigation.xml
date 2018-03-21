@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/main_navigation_kebiao"
+            android:title="@string/main_navigation_menu_kebiao"/>
+        <item
+            android:id="@+id/main_navigation_guanzhu"
+            android:title="@string/main_navigation_menu_guanzhu"/>
+        <item
+            android:id="@+id/main_navigation_yiji"
+            android:title="@string/main_navigation_menu_yiji"/>
+        <item
+            android:id="@+id/main_navigation_erji"
+            android:title="@string/main_navigation_menu_erji"/>
+        <item
+            android:id="@+id/main_navigation_tuike"
+            android:title="@string/main_navigation_menu_tuike"/>
+        <item
+            android:id="@+id/main_navigation_pf"
+            android:title="@string/main_navigation_menu_pf"/>
+        <item
+            android:id="@+id/main_navigation_update"
+            android:title="@string/main_navigation_menu_update"/>
+        <item
+            android:id="@+id/main_navigation_about"
+            android:title="@string/main_navigation_menu_about"/>
+    </group>
+
+</menu>
