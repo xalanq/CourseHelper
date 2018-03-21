@@ -4,27 +4,35 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/main_navigation_kebiao"
+            android:icon="@drawable/ic_date_range"
             android:title="@string/main_navigation_menu_kebiao"/>
         <item
             android:id="@+id/main_navigation_guanzhu"
+            android:icon="@drawable/ic_favorite"
             android:title="@string/main_navigation_menu_guanzhu"/>
         <item
             android:id="@+id/main_navigation_yiji"
+            android:icon="@drawable/ic_looks_one"
             android:title="@string/main_navigation_menu_yiji"/>
         <item
             android:id="@+id/main_navigation_erji"
+            android:icon="@drawable/ic_looks_two"
             android:title="@string/main_navigation_menu_erji"/>
         <item
             android:id="@+id/main_navigation_tuike"
+            android:icon="@drawable/ic_delete_sweep"
             android:title="@string/main_navigation_menu_tuike"/>
         <item
             android:id="@+id/main_navigation_pf"
+            android:icon="@drawable/ic_exposure_plus_1"
             android:title="@string/main_navigation_menu_pf"/>
         <item
             android:id="@+id/main_navigation_update"
+            android:icon="@drawable/ic_update"
             android:title="@string/main_navigation_menu_update"/>
         <item
             android:id="@+id/main_navigation_about"
+            android:icon="@drawable/ic_help"
             android:title="@string/main_navigation_menu_about"/>
     </group>
 
