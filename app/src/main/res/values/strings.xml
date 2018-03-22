@@ -6,13 +6,13 @@
     <string name="app_blog">blog.xalanq.com</string>
     <string name="app_version">v1.0</string>
 
-    <string name="about_author">作者：xalanq</string>
+    <string name="about_author">作者：<a href="http://blog.xalanq.com">xalanq</a></string>
     <string name="about_github">GitHub主页：<a href="https://github.com/xalanq/CourseHelper">xalanq/CourseHelper</a></string>
     <string name="about_update">检查更新</string>
     <string name="about_feedback">反馈问题</string>
 
-    <string name="main_navigation_drawer_open">Open navigation drawer</string>
-    <string name="main_navigation_drawer_close">Close navigation drawer</string>
+    <string name="main_navigation_drawer_open">Open main_navigation drawer</string>
+    <string name="main_navigation_drawer_close">Close main_navigation drawer</string>
     <string name="main_navigation_menu_kebiao">课表</string>
     <string name="main_navigation_menu_guanzhu">关注</string>
     <string name="main_navigation_menu_yiji">一级选课</string>
@@ -25,6 +25,6 @@
     <string name="main_navigation_login">登录</string>
     <string name="main_navigation_logout">注销</string>
 
-    <string name="main_double_click">再按一次退出</string>
+    <string name="main_double_click_to_exit">再按一次退出</string>
 
 </resources>

@@ -8,15 +8,15 @@ package com.xalanq.coursehelper;
 
 public class FragmentAllocator {
 
-    private MainFragment mainFragment;
+    private KebiaoFragment kebiaoFragment;
     private AboutFragment aboutFragment;
 
-    public MainFragment getMain() {
-        if (mainFragment == null) {
-            mainFragment = new MainFragment();
-            mainFragment.setName(R.string.main_navigation_menu_kebiao);
+    public KebiaoFragment getKebiao() {
+        if (kebiaoFragment == null) {
+            kebiaoFragment = new KebiaoFragment();
+            kebiaoFragment.setName(R.string.main_navigation_menu_kebiao);
         }
-        return mainFragment;
+        return kebiaoFragment;
     }
 
     public AboutFragment getAbout() {

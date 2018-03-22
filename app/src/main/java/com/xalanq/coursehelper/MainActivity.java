@@ -25,7 +25,7 @@ public class MainActivity extends BasicActivity
 
     @BindView(R.id.main_layout_drawer)
     DrawerLayout drawerLayout;
-    @BindView(R.id.main_content)
+    @BindView(R.id.main_layout_content)
     LinearLayout contentLayout;
     @BindView(R.id.main_toolbar)
     Toolbar toolbar;
@@ -49,7 +49,7 @@ public class MainActivity extends BasicActivity
         setToolbar();
         setNavigation();
 
-        switchFragment(fragmentAllocator.getMain());
+        switchFragment(fragmentAllocator.getKebiao());
     }
 
     private void initValues() {
@@ -85,7 +85,7 @@ public class MainActivity extends BasicActivity
         if (currentFragment == fragment)
             return;
         if (!fragment.isAdded())
-            fragmentTransaction.add(R.id.main_content, fragment);
+            fragmentTransaction.add(R.id.main_layout_content, fragment);
         if (currentFragment != null)
             fragmentTransaction.hide(currentFragment);
         currentFragment = fragment;
@@ -105,7 +105,7 @@ public class MainActivity extends BasicActivity
                 return;
             }
             doubleClickToExitPressOnce = true;
-            Toast.makeText(this, R.string.main_double_click, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.main_double_click_to_exit, Toast.LENGTH_SHORT).show();
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -119,7 +119,7 @@ public class MainActivity extends BasicActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.main_navigation_kebiao) {
-            switchFragment(fragmentAllocator.getMain());
+            switchFragment(fragmentAllocator.getKebiao());
         }
         else if (id == R.id.main_navigation_about) {
             switchFragment(fragmentAllocator.getAbout());

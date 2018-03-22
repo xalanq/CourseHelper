@@ -24,6 +24,7 @@ public class AboutFragment extends BasicFragment {
         View view = inflater.inflate(R.layout.about_fragment, container, false);
         TextView author = view.findViewById(R.id.about_author);
         author.setText(R.string.about_author);
+        author.setMovementMethod(LinkMovementMethod.getInstance());
         TextView github = view.findViewById(R.id.about_github);
         github.setText(R.string.about_github);
         github.setMovementMethod(LinkMovementMethod.getInstance());
