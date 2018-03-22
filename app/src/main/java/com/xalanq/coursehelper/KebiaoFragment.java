@@ -35,6 +35,8 @@ import butterknife.ButterKnife;
  */
 public class KebiaoFragment extends BasicFragment {
 
+    private CardAdapter adapter;
+
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.kebiao_fragment, container, false);
         init(view);
@@ -43,26 +45,104 @@ public class KebiaoFragment extends BasicFragment {
     }
 
     private void test(View view) {
+        adapter.addNotification("距离一级选课还有1天20小时5分");
 
-        List<CardAdapter.Data> list = new ArrayList<>();
+        adapter.addDivider("周一");
+
         CourseBrief course = new CourseBrief();
-        course.setValue("name", "大学物理（一）");
+        course.setValue("name", "大学物理B(1)");
         course.setValue("place", "六教6A414");
         course.setValue("time", "早上9:50");
         course.setValue("teacher", "李列明");
         course.setValue("pid", "123456");
-        list.add(CardAdapter.Data.fromNotification("距离一级选课还有1天20小时5分"));
-        list.add(CardAdapter.Data.fromDivider("周一"));
-        for (int i = 0; i < 10; ++i)
-            list.add(new CardAdapter.Data(course));
+        adapter.addCourse(course);
 
-        CardAdapter adapter = new CardAdapter(list);
-        RecyclerView recyclerView = view.findViewById(R.id.kebiao_content_recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setAdapter(adapter);
+        course = new CourseBrief();
+        course.setValue("name", "面向对象程序设计基础");
+        course.setValue("place", "四教4202");
+        course.setValue("time", "下午13:30");
+        course.setValue("teacher", "黄民烈");
+        course.setValue("pid", "123456");
+        adapter.addCourse(course);
+
+        adapter.addDivider("周二");
+
+        course = new CourseBrief();
+        course.setValue("name", "离散数学(2)");
+        course.setValue("place", "六教6A214");
+        course.setValue("time", "早上9:50");
+        course.setValue("teacher", "张小平");
+        course.setValue("pid", "123456");
+        adapter.addCourse(course);
+
+        course = new CourseBrief();
+        course.setValue("name", "线性代数(2)");
+        course.setValue("place", "五教5104");
+        course.setValue("time", "下午13:30");
+        course.setValue("teacher", "鲁自群");
+        course.setValue("pid", "123456");
+        adapter.addCourse(course);
+
+        adapter.addDivider("周三");
+
+        course = new CourseBrief();
+        course.setValue("name", "大学物理B(1)");
+        course.setValue("place", "六教6A414");
+        course.setValue("time", "早上8:00");
+        course.setValue("teacher", "李列明");
+        course.setValue("pid", "123456");
+        adapter.addCourse(course);
+
+        course = new CourseBrief();
+        course.setValue("name", "微积分A(2)");
+        course.setValue("place", "六教6C202");
+        course.setValue("time", "早上9:50");
+        course.setValue("teacher", "姚家燕");
+        course.setValue("pid", "123456");
+        adapter.addCourse(course);
+
+        course = new CourseBrief();
+        course.setValue("name", "中国近代史纲要");
+        course.setValue("place", "五教5202");
+        course.setValue("time", "下午13:30");
+        course.setValue("teacher", "李蕉");
+        course.setValue("pid", "123456");
+        adapter.addCourse(course);
+
+        adapter.addDivider("周四");
+
+        course = new CourseBrief();
+        course.setValue("name", "基础英语读写(2)");
+        course.setValue("place", "紫荆C楼212");
+        course.setValue("time", "早上8:00");
+        course.setValue("teacher", "刘延");
+        course.setValue("pid", "123456");
+        adapter.addCourse(course);
+
+        adapter.addDivider("周五");
+
+        course = new CourseBrief();
+        course.setValue("name", "微积分A(2)");
+        course.setValue("place", "六教6C202");
+        course.setValue("time", "早上8:00");
+        course.setValue("teacher", "姚家燕");
+        course.setValue("pid", "123456");
+        adapter.addCourse(course);
+
+        course = new CourseBrief();
+        course.setValue("name", "美式英语语音");
+        course.setValue("place", "六教6A103");
+        course.setValue("time", "早上9:50");
+        course.setValue("teacher", "Yariv Pomeranz");
+        course.setValue("pid", "123456");
+        adapter.addCourse(course);
     }
 
     private void init(View view) {
+        adapter = new CardAdapter();
+        RecyclerView recyclerView = view.findViewById(R.id.kebiao_content_recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setAdapter(adapter);
     }
 
     public static class CourseBrief extends Course {
@@ -142,16 +222,28 @@ public class KebiaoFragment extends BasicFragment {
             notifyItemRangeChanged(position, data.size());
         }
 
+        void addCourse(CourseBrief course) {
+            addCourse(course, data.size());
+        }
+
         void addDivider(String divider, int position) {
             data.add(position, Data.fromDivider(divider));
             notifyItemInserted(position);
             notifyItemRangeChanged(position, data.size());
         }
 
+        void addDivider(String divider) {
+            addDivider(divider, data.size());
+        }
+
         void addNotification(String notification, int position) {
             data.add(position, Data.fromNotification(notification));
             notifyItemInserted(position);
             notifyItemRangeChanged(position, data.size());
+        }
+
+        void addNotification(String notification) {
+            addNotification(notification, data.size());
         }
 
         /**
