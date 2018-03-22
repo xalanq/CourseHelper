@@ -1,5 +1,8 @@
 package com.xalanq.coursehelper;
 
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -178,6 +181,18 @@ public class KebiaoFragment extends BasicFragment {
             public CourseHolder(View itemView) {
                 super(itemView);
                 ButterKnife.bind(this, itemView);
+                tint(course_place);
+                tint(course_time);
+                tint(course_teacher);
+            }
+
+            private void tint(TextView view) {
+                Drawable[] drawables = view.getCompoundDrawables();
+                for (Drawable drawable : drawables) {
+                    if (drawable != null) {
+                        drawable.setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP);
+                    }
+                }
             }
         }
 
