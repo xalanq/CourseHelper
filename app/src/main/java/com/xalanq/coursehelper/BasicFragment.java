@@ -1,6 +1,6 @@
 package com.xalanq.coursehelper;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 
 /**
  * Author: xalanq
