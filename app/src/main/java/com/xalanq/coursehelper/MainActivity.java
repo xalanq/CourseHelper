@@ -1,5 +1,7 @@
 package com.xalanq.coursehelper;
 
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.NavigationView;
@@ -7,6 +9,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,6 +36,7 @@ public class MainActivity extends BasicActivity
     private FragmentAllocator fragmentAllocator;
     private BasicFragment currentFragment;
     private boolean doubleClickToExitPressOnce = false;
+    private LoginDialog loginDialog;
 
 
     @Override
@@ -55,12 +59,36 @@ public class MainActivity extends BasicActivity
     private void setNavigation() {
         navigationView.getMenu().findItem(R.id.main_navigation_kebiao).setChecked(true);
         final TextView username = navigationView.getHeaderView(0).findViewById(R.id.main_navigation_username);
-        username.setText(R.string.main_navigation_login);
+        if (loginDialog != null && loginDialog.isActive())
+            username.setText(getString(R.string.main_navigation_username1) + loginDialog.getUsername() + getString(R.string.main_navigation_username2));
+        else
+            username.setText(R.string.main_navigation_login);
         username.setClickable(true);
         username.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(BasicApplication.getContext(), R.string.main_navigation_login, Toast.LENGTH_SHORT).show();
+                if (loginDialog == null || !loginDialog.isActive()) {
+                    if (loginDialog == null) {
+                        loginDialog = new LoginDialog(MainActivity.this);
+                        loginDialog.setTitle(R.string.login_title);
+                    }
+                    loginDialog.show();
+                }
+                else {
+                    new AlertDialog.Builder(MainActivity.this)
+                        .setTitle(R.string.main_navigation_logout)
+                        .setMessage(R.string.logout_message)
+                        .setPositiveButton(R.string.logout_positive, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                loginDialog = null;
+                                username.setText(R.string.main_navigation_login);
+                            }
+                        })
+                        .setNegativeButton(R.string.logout_negative, null)
+                        .show();
+                }
+                drawerLayout.closeDrawer(GravityCompat.START);
             }
         });
     }
@@ -87,6 +115,21 @@ public class MainActivity extends BasicActivity
         fragmentTransaction.show(fragment);
         fragmentTransaction.commit();
         toolbarTitle.setText(fragment.getName());
+    }
+
+    private void updateData() {
+        final ProgressDialog dialog = new ProgressDialog(this);
+        dialog.setTitle(R.string.main_dialog_update_title);
+        dialog.setMessage(getString(R.string.main_updating));
+        dialog.setCancelable(false);
+        dialog.show();
+        Toast.makeText(BasicApplication.getContext(), "更新数据", Toast.LENGTH_SHORT).show();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                dialog.cancel();
+            }
+        }, 4000);
     }
 
     @Override
@@ -119,9 +162,21 @@ public class MainActivity extends BasicActivity
         else if (id == R.id.main_navigation_about) {
             switchFragment(fragmentAllocator.getAbout());
         }
+        else if (id == R.id.main_navigation_update) {
+            new AlertDialog.Builder(this)
+                .setTitle(R.string.main_dialog_update_title)
+                .setMessage(R.string.main_dialog_update_message)
+                .setPositiveButton(R.string.main_dialog_update_positive, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        updateData();
+                    }
+                })
+                .setNegativeButton(R.string.main_dialog_update_negative, null)
+                .show();
+        }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
-
 
 }

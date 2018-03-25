@@ -24,7 +24,25 @@
     <string name="main_navigation_menu_about">关于</string>
     <string name="main_navigation_login">登录</string>
     <string name="main_navigation_logout">注销</string>
+    <string name="main_navigation_username1">萌萌哒的</string>
+    <string name="main_navigation_username2">~</string>
 
+    <string name="login_title">登录</string>
+    <string name="login_username">用户名/学号</string>
+    <string name="login_password">密码</string>
+    <string name="login_sign_in">┏(走你)=☞</string>
+    <string name="login_declaration">声明：\n1. 本软件只会加密存储密码在本地，且该密码仅用于“自动保存密码”功能。\n2. 本软件不会存储、泄露任何个人信息到服务器上（因为本来就没有服务器）。</string>
+
+    <string name="logout_message">你确定要退出当前账号吗？</string>
+    <string name="logout_positive">嗯...</string>
+    <string name="logout_negative">不！手残！</string>
+
+    <string name="main_dialog_update_title">更新所有课程数据</string>
+    <string name="main_dialog_update_message">是否要更新所有课程的数据？这可能会花费较长时间。</string>
+    <string name="main_dialog_update_positive">更新</string>
+    <string name="main_dialog_update_negative">取消</string>
+
+    <string name="main_updating">更新中</string>
     <string name="main_double_click_to_exit">再按一次退出</string>
 
 </resources>

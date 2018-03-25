@@ -29,10 +29,12 @@
         <item
             android:id="@+id/main_navigation_update"
             android:icon="@drawable/ic_update"
+            android:checkable="false"
             android:title="@string/main_navigation_menu_update"/>
         <item
             android:id="@+id/main_navigation_settings"
             android:icon="@drawable/ic_build"
+            android:checkable="false"
             android:title="@string/main_navigation_menu_settings"/>
         <item
             android:id="@+id/main_navigation_about"
