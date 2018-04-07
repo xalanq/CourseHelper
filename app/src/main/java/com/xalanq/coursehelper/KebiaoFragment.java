@@ -1,14 +1,21 @@
 package com.xalanq.coursehelper;
 
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -36,6 +43,12 @@ import butterknife.ButterKnife;
 public class KebiaoFragment extends BasicFragment {
 
     private CardAdapter adapter;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.kebiao_fragment, container, false);
@@ -136,6 +149,53 @@ public class KebiaoFragment extends BasicFragment {
         course.setValue("teacher", "Yariv Pomeranz");
         course.setValue("pid", "123456");
         adapter.addCourse(course);
+    }
+
+    private void updateData() {
+        final ProgressDialog dialog = new ProgressDialog(getActivity());
+        dialog.setTitle(R.string.kebiao_dialog_update_title);
+        dialog.setMessage(getString(R.string.main_updating));
+        dialog.setCancelable(false);
+        dialog.show();
+        Toast.makeText(BasicApplication.getContext(), R.string.kebiao_dialog_update_title, Toast.LENGTH_SHORT).show();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                dialog.cancel();
+            }
+        }, 4000);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.button_refresh) {
+            new AlertDialog.Builder(getActivity())
+                .setTitle(R.string.kebiao_dialog_update_title)
+                .setMessage(R.string.kebiao_dialog_update_message)
+                .setPositiveButton(R.string.kebiao_dialog_update_positive, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        updateData();
+                    }
+                })
+                .setNegativeButton(R.string.kebiao_dialog_update_negative, null)
+                .show();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.kebiao_toolbar, menu);
+        for (int i = 0; i < menu.size(); ++i) {
+            MenuItem item = menu.getItem(i);
+            Drawable drawable = item.getIcon();
+            if (drawable != null) {
+                drawable.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
+            }
+        }
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     private void init(View view) {

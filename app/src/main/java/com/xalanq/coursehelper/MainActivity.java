@@ -123,7 +123,7 @@ public class MainActivity extends BasicActivity
         dialog.setMessage(getString(R.string.main_updating));
         dialog.setCancelable(false);
         dialog.show();
-        Toast.makeText(BasicApplication.getContext(), "更新数据", Toast.LENGTH_SHORT).show();
+        Toast.makeText(BasicApplication.getContext(), R.string.main_dialog_update_title, Toast.LENGTH_SHORT).show();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
