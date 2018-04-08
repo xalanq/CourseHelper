@@ -17,6 +17,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.xalanq.xthulib.xCookieManager;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -59,17 +61,14 @@ public class MainActivity extends BasicActivity
     private void setNavigation() {
         navigationView.getMenu().findItem(R.id.main_navigation_kebiao).setChecked(true);
         final TextView username = navigationView.getHeaderView(0).findViewById(R.id.main_navigation_username);
-        if (loginDialog != null && loginDialog.isActive())
-            username.setText(getString(R.string.main_navigation_username1) + loginDialog.getUsername() + getString(R.string.main_navigation_username2));
-        else
-            username.setText(R.string.main_navigation_login);
+        username.setText(R.string.main_navigation_login);
         username.setClickable(true);
         username.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (loginDialog == null || !loginDialog.isActive()) {
+                if (loginDialog == null || username.getText().toString().equals(getString(R.string.main_navigation_login))) {
                     if (loginDialog == null) {
-                        loginDialog = new LoginDialog(MainActivity.this);
+                        loginDialog = new LoginDialog(MainActivity.this, username);
                         loginDialog.setTitle(R.string.login_title);
                     }
                     loginDialog.show();
@@ -83,6 +82,7 @@ public class MainActivity extends BasicActivity
                             public void onClick(DialogInterface dialog, int which) {
                                 loginDialog = null;
                                 username.setText(R.string.main_navigation_login);
+                                xCookieManager.getCookieJar().clear();
                             }
                         })
                         .setNegativeButton(R.string.logout_negative, null)
