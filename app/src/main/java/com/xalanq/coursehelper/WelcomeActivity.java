@@ -13,7 +13,7 @@ import android.support.annotation.Nullable;
 /**
  * 启动动画
  */
-public class WelcomActivity extends BasicActivity {
+public class WelcomeActivity extends BasicActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

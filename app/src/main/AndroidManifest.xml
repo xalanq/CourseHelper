@@ -16,7 +16,7 @@
             android:name=".MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".WelcomActivity"
+            android:name=".WelcomeActivity"
             android:theme="@style/WelcomeTheme"
             android:screenOrientation="portrait">
             <intent-filter>
